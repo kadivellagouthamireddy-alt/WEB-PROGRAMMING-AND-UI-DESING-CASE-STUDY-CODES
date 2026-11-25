@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MRU Student Helpdesk & Circular Portal</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; background-color: #f4f6f9; }
+        header { background-color: #003366; color: white; padding: 20px; text-align: center; }
+        nav { background-color: #0055a5; padding: 10px; text-align: center; }
+        nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
+        main { max-width: 800px; margin: 20px auto; padding: 20px; background: white; border-radius: 8px; }
+        section { margin-bottom: 25px; }
+        h2 { color: #003366; border-bottom: 2px solid #0055a5; padding-bottom: 5px; }
+        .notice { background: #eef5ff; padding: 10px; margin: 10px 0; border-left: 4px solid #0055a5; }
+        input, textarea, button { width: 100%; padding: 10px; margin: 8px 0; box-sizing: border-box; }
+        button { background-color: #003366; color: white; border: none; cursor: pointer; font-size: 16px; }
+        footer { text-align: center; padding: 15px; background: #003366; color: white; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Malla Reddy University (MRU)</h1>
+        <p>Student Helpdesk & Circular Portal</p>
+    </header>
+
+    <nav>
+        <a href="#circulars">Circulars</a>
+        <a href="#exams">Exam Notices</a>
+        <a href="#downloads">Downloads</a>
+        <a href="#enquiry">Helpdesk Enquiry</a>
+    </nav>
+
+    <main>
+        <section id="circulars">
+            <h2>Academic Circulars & Announcements</h2>
+            <div class="notice"><strong>Nov 2026:</strong> I B.Tech R-26 Case Study submission deadline is next week.</div>
+            <div class="notice"><strong>Campus Update:</strong> Central Library will remain open until 8:00 PM during exams.</div>
+        </section>
+
+        <section id="exams">
+            <h2>Examination Notifications</h2>
+            <ul>
+                <li>Minor-1 Examination Timetable Released</li>
+                <li>Hall Ticket Download Instructions for Semester Exams</li>
+            </ul>
+        </section>
+
+        <section id="downloads">
+            <h2>Important Links & Resources</h2>
+            <p><a href="#">Download Academic Calendar (PDF)</a> | <a href="#">Student Handbook</a></p>
+        </section>
+
+        <section id="enquiry">
+            <h2>Student Enquiry Form</h2>
+            <form>
+                <label>Full Name:</label>
+                <input type="text" placeholder="Enter your name" required>
+                
+                <label>Roll Number:</label>
+                <input type="text" placeholder="e.g., 2611CS040075" required>
+                
+                <label>Your Question / Issue:</label>
+                <textarea rows="4" placeholder="Type your enquiry here..." required></textarea>
+                
+                <button type="submit">Submit Enquiry</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>Contact Helpdesk: helpdesk@mallareddyuniversity.ac.in | Phone: +91 94406 88439</p>
+    </footer>
+
+</body>
+</html>

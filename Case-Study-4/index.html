@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MRU Online Student Service Portal</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f6f9; margin: 0; padding: 20px; }
+        .container { max-width: 650px; margin: auto; background: white; padding: 25px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        h1 { color: #003366; text-align: center; margin-bottom: 5px; }
+        p.subtitle { text-align: center; color: #555; margin-top: 0; }
+        label { display: block; margin-top: 12px; font-weight: bold; color: #003366; }
+        input, select, textarea { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        button { width: 100%; padding: 12px; background: #003366; color: white; border: none; border-radius: 5px; font-size: 16px; font-weight: bold; margin-top: 15px; cursor: pointer; }
+        button:hover { background: #0055a5; }
+        .feedback { margin-top: 15px; padding: 12px; border-radius: 5px; display: none; font-weight: bold; }
+        .success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .submissions { margin-top: 25px; }
+        .record { background: #eef5ff; padding: 10px; border-left: 4px solid #0055a5; margin-bottom: 10px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Malla Reddy University (MRU)</h1>
+    <p class="subtitle">Online Leave, Bonafide & Course Registration Portal</p>
+
+    <form id="serviceForm">
+        <label for="studentName">Student Full Name:</label>
+        <input type="text" id="studentName" placeholder="Enter your full name">
+
+        <label for="rollNo">Roll Number:</label>
+        <input type="text" id="rollNo" placeholder="e.g., 2611CS040075">
+
+        <label for="serviceType">Select Service Request:</label>
+        <select id="serviceType">
+            <option value="">-- Choose a Service --</option>
+            <option value="Leave Request">Leave Request</option>
+            <option value="Bonafide Certificate">Bonafide Certificate Application</option>
+            <option value="Elective Course Registration">Elective Course Registration</option>
+        </select>
+
+        <label for="details">Reason / Course Name & Dates:</label>
+        <textarea id="details" rows="3" placeholder="Enter reason for leave, purpose of bonafide, or elective course name..."></textarea>
+
+        <button type="submit">Submit Request</button>
+    </form>
+
+    <!-- Immediate Feedback Message -->
+    <div id="feedbackBox" class="feedback"></div>
+
+    <!-- Submitted Requests List -->
+    <div class="submissions">
+        <h3>Submitted Applications</h3>
+        <div id="recordsList">No applications submitted yet.</div>
+    </div>
+</div>
+
+<script>
+    // Array to store submitted service applications
+    let applications = [];
+
+    // Event handling for form submission
+    document.getElementById("serviceForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent page reload
+        processApplication();
+    });
+
+    // Function to validate input and update the DOM
+    function processApplication() {
+        let name = document.getElementById("studentName").value.trim();
+        let roll = document.getElementById("rollNo").value.trim();
+        let service = document.getElementById("serviceType").value;
+        let details = document.getElementById("details").value.trim();
+        let feedbackBox = document.getElementById("feedbackBox");
+
+        // Form Validation
+        if (name === "" || roll === "" || service === "" || details === "") {
+            showFeedback("Error: Please fill in all fields before submitting!", "error");
+            return;
+        }
+
+        if (roll.length < 8) {
+            showFeedback("Error: Please enter a valid MRU Roll Number.", "error");
+            return;
+        }
+
+        // Save valid entry into the array
+        let newEntry = {
+            name: name,
+            roll: roll.toUpperCase(),
+            service: service,
+            details: details
+        };
+        applications.push(newEntry);
+
+        // Show success feedback and refresh list
+        showFeedback("Success! Your " + service + " has been submitted.", "success");
+        displayRecords();
+        document.getElementById("serviceForm").reset();
+    }
+
+    // DOM Manipulation for immediate feedback
+    function showFeedback(message, type) {
+        let feedbackBox = document.getElementById("feedbackBox");
+        feedbackBox.textContent = message;
+        feedbackBox.className = "feedback " + type;
+        feedbackBox.style.display = "block";
+    }
+
+    // DOM Manipulation to display stored array items
+    function displayRecords() {
+        let listDiv = document.getElementById("recordsList");
+        listDiv.innerHTML = "";
+
+        for (let i = 0; i < applications.length; i++) {
+            let app = applications[i];
+            listDiv.innerHTML += `
+                <div class="record">
+                    <strong>${app.service}</strong> — ${app.name} (${app.roll})<br>
+                    <small>Details: ${app.details}</small>
+                </div>
+            `;
+        }
+    }
+</script>
+
+</body>
+</html>

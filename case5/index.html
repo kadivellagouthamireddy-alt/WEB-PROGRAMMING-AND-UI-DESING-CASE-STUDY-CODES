@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MRU Student Dashboard</title>
+
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+<!-- 1. Bootstrap Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+
+        <a class="navbar-brand fw-bold" href="#">
+            MRU Student Dashboard
+        </a>
+
+        <button class="navbar-toggler" type="button"
+        data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="#overview">Overview</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#timetable">Timetable</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#exams">Exams</a>
+                </li>
+
+                <li class="nav-item">
+                    <button class="btn btn-warning btn-sm ms-2 mt-1"
+                    data-bs-toggle="modal" data-bs-target="#serviceModal">
+                        Quick Services
+                    </button>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container my-4">
+
+    <!-- 2. Bootstrap Alerts -->
+
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Fee Reminder:</strong>
+        Semester tuition & examination fee due date is approaching.
+        Please clear dues on time.
+
+        <button type="button" class="btn-close"
+        data-bs-dismiss="alert"></button>
+    </div>
+
+    <div class="alert alert-info" role="alert">
+        <strong>Academic Notification:</strong>
+        I B.Tech R-26 Web Programming & UI Design Case Study evaluations start next week.
+    </div>
+
+    <!-- 3. Bootstrap Carousel -->
+
+    <div id="campusCarousel"
+    class="carousel slide mb-4 shadow-sm rounded overflow-hidden"
+    data-bs-ride="carousel">
+
+        <div class="carousel-inner">
+
+            <div class="carousel-item active bg-dark text-white p-5 text-center">
+                <h3>Welcome Back, Student (2611CS040060)</h3>
+                <p>Malla Reddy University — Centralized Academic & Student Services Portal</p>
+            </div>
+
+            <div class="carousel-item bg-primary text-white p-5 text-center">
+                <h3>Endterm & Minor Exam Schedules</h3>
+                <p>Check your updated hall tickets and seating arrangements below.</p>
+            </div>
+
+            <div class="carousel-item bg-success text-white p-5 text-center">
+                <h3>Campus Placement & Hackathon Registrations Open</h3>
+                <p>Click Quick Services in the top bar to register for upcoming workshops.</p>
+            </div>
+
+        </div>
+
+        <button class="carousel-control-prev" type="button"
+        data-bs-target="#campusCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+
+        <button class="carousel-control-next" type="button"
+        data-bs-target="#campusCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+
+    </div>
+
+    <!-- 4. Bootstrap Grid System and Cards -->
+
+    <div class="row g-3 mb-4" id="overview">
+
+        <div class="col-md-4">
+            <div class="card border-success shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title text-success">Overall Attendance</h5>
+                    <h2 class="display-6 fw-bold">86.5%</h2>
+                    <p class="card-text text-muted">
+                        Status: Eligible for Endterm Exams
+                    </p>
+                    <button class="btn btn-outline-success btn-sm">
+                        View Subject-wise
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card border-primary shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title text-primary">Next Examination</h5>
+                    <h4 class="fw-bold">Web Programming</h4>
+                    <p class="card-text text-muted">
+                        Date: Dec 10, 2026 | Room: Block-A 302
+                    </p>
+                    <button class="btn btn-primary btn-sm">
+                        Download Hall Ticket
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card border-danger shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title text-danger">Fee Status</h5>
+                    <h4 class="fw-bold">₹ 1,500 Pending</h4>
+                    <p class="card-text text-muted">
+                        Examination & Lab Maintenance Fee
+                    </p>
+                    <button class="btn btn-danger btn-sm">
+                        Pay Online Now
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 5. Bootstrap Table -->
+
+    <div class="card shadow-sm mb-4" id="timetable">
+
+        <div class="card-header bg-dark text-white fw-bold">
+            Weekly Timetable & Examination Schedule
+        </div>
+
+        <div class="card-body table-responsive">
+
+            <table class="table table-striped table-hover align-middle">
+
+                <thead class="table-primary">
+                    <tr>
+                        <th>Day / Date</th>
+                        <th>09:30 AM - 11:10 AM</th>
+                        <th>11:20 AM - 01:00 PM</th>
+                        <th>02:00 PM - 04:00 PM</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td><strong>Monday</strong></td>
+                        <td>Web Programming & UI Design</td>
+                        <td>Data Structures</td>
+                        <td>Web Design Lab (Lab-2)</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Wednesday</strong></td>
+                        <td>Mathematics - II</td>
+                        <td>Python Programming</td>
+                        <td>Digital Logic Design</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Friday</strong></td>
+                        <td>Minor-2 Assessment</td>
+                        <td>Technical Seminar</td>
+                        <td>Library / Sports</td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- 6. Bootstrap Modal -->
+
+<div class="modal fade" id="serviceModal" tabindex="-1">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title">Student Services Portal</h5>
+
+                <button type="button"
+                class="btn-close btn-close-white"
+                data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <p>Select a student service to access immediately:</p>
+
+                <div class="d-grid gap-2">
+
+                    <button class="btn btn-outline-primary">
+                        Apply for Bonafide Certificate
+                    </button>
+
+                    <button class="btn btn-outline-primary">
+                        Submit Online Leave Request
+                    </button>
+
+                    <button class="btn btn-outline-primary">
+                        Bus Pass & Hostel Renewal
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal">
+                    Close
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- Bootstrap 5 JavaScript CDN -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

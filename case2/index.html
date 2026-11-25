@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MRU Student Services Homepage</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            background-color: #f0f4f8;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #003366, #0066cc);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 5px solid #0066cc;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+        }
+
+        .card h3 {
+            color: #003366;
+            margin-top: 0;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 15px;
+            background: #0066cc;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .btn:hover {
+            background: #004999;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #003366;
+            color: white;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Malla Reddy University (MRU)</h1>
+        <p>Student Services Homepage — Quick Campus Access</p>
+        <p>Roll No: 2611CS040060</p>
+    </header>
+
+    <div class="container">
+
+        <div class="card">
+            <h3>📚 Central Library</h3>
+            <p>Access digital journals, e-books, previous question papers, and library timings.</p>
+            <a href="#" class="btn">Explore Library</a>
+        </div>
+
+        <div class="card">
+            <h3>🚌 Campus Transport</h3>
+            <p>Check university bus routes, pickup timings, and transport pass registration.</p>
+            <a href="#" class="btn">View Bus Routes</a>
+        </div>
+
+        <div class="card">
+            <h3>🏠 Hostel Facilities</h3>
+            <p>Information on boys & girls hostels, mess menu, rules, and room allotment.</p>
+            <a href="#" class="btn">Hostel Portal</a>
+        </div>
+
+        <div class="card">
+            <h3>💼 Training & Placements</h3>
+            <p>Upcoming campus drives, internship opportunities, and career guidance workshops.</p>
+            <a href="#" class="btn">Placement Cell</a>
+        </div>
+
+        <div class="card">
+            <h3>📝 Examination Cell</h3>
+            <p>Download exam timetables, hall tickets, syllabus copies, and semester results.</p>
+            <a href="#" class="btn">Exam Updates</a>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Malla Reddy University — Student Support & Services</p>
+    </footer>
+
+</body>
+</html>

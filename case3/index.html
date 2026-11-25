@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MRU Attendance & Exam Eligibility Checker</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f6f9; margin: 0; padding: 20px; }
+        .container { max-width: 750px; margin: auto; background: white; padding: 25px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        h1 { color: #003366; text-align: center; }
+        .form-group { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 15px; }
+        input { flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 5px; min-width: 140px; }
+        button { padding: 10px 20px; background: #003366; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        button:hover { background: #0055a5; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: center; }
+        th { background-color: #003366; color: white; }
+        .eligible { color: green; font-weight: bold; }
+        .condonation { color: orange; font-weight: bold; }
+        .detained { color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>MRU Exam Eligibility Checker</h1>
+    <p style="text-align:center;">Check eligibility for Minor-1, Minor-2, and Endterm Examinations</p>
+
+    <div class="form-group">
+        <input type="text" id="rollNo" placeholder="Roll Number (e.g., 2611CS040060)">
+        <input type="text" id="studentName" placeholder="Student Name">
+        <input type="number" id="attendance" placeholder="Attendance % (0-100)">
+        <input type="number" id="marks" placeholder="Internal Marks (0-40)">
+        <button onclick="addStudent()">Check & Add</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Roll No</th>
+                <th>Student Name</th>
+                <th>Attendance %</th>
+                <th>Marks (/40)</th>
+                <th>Exam Eligibility Status</th>
+            </tr>
+        </thead>
+        <tbody id="studentTable"></tbody>
+    </table>
+</div>
+
+<script>
+    // Array storing initial student records
+    let students = [
+        { roll: "2611CS040060", name: "Student 1", attendance: 85, marks: 34 },
+        { roll: "2611CS040061", name: "Student 2", attendance: 68, marks: 25 },
+        { roll: "2611CS040062", name: "Student 3", attendance: 55, marks: 18 }
+    ];
+
+    // Function using operators and conditional statements
+    function checkEligibility(attendance, marks) {
+        if (attendance >= 75 && marks >= 16) {
+            return { text: "Eligible for Endterm & Minors", css: "eligible" };
+        } else if (attendance >= 65 && attendance < 75 && marks >= 16) {
+            return { text: "Eligible with Condonation Fee", css: "condonation" };
+        } else {
+            return { text: "Not Eligible / Detained", css: "detained" };
+        }
+    }
+
+    // Function using a loop to display all student records
+    function renderTable() {
+        let tableBody = document.getElementById("studentTable");
+        tableBody.innerHTML = "";
+
+        for (let i = 0; i < students.length; i++) {
+            let s = students[i];
+            let result = checkEligibility(s.attendance, s.marks);
+
+            let row = `<tr>
+                <td>${s.roll}</td>
+                <td>${s.name}</td>
+                <td>${s.attendance}%</td>
+                <td>${s.marks}</td>
+                <td class="${result.css}">${result.text}</td>
+            </tr>`;
+            tableBody.innerHTML += row;
+        }
+    }
+
+    function addStudent() {
+        let roll = document.getElementById("rollNo").value;
+        let name = document.getElementById("studentName").value;
+        let attendance = Number(document.getElementById("attendance").value);
+        let marks = Number(document.getElementById("marks").value);
+
+        if (roll === "" || name === "" || isNaN(attendance) || isNaN(marks)) {
+            alert("Please fill in all fields properly!");
+            return;
+        }
+
+        students.push({ roll: roll, name: name, attendance: attendance, marks: marks });
+        renderTable();
+
+        document.getElementById("rollNo").value = "";
+        document.getElementById("studentName").value = "";
+        document.getElementById("attendance").value = "";
+        document.getElementById("marks").value = "";
+    }
+
+    // Load initial records on page open
+    renderTable();
+</script>
+
+</body>
+</html>
